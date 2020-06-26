@@ -3,11 +3,11 @@ app:
     code: Prometheus
     notify: appzdev@cloudbourne.co
 build:
-    version: 2.0
+    version: 2.17
     env: DEV
     build_file: none
     output_files: output/*.zip
-    image_template: prometheus-2.0
+    image_template: prometheus-2.17
     image_name: alpha/prometheus
 deploy:
     context: alpha/DEV
@@ -17,4 +17,4 @@ deploy:
 monitor:
     notify: appzops@cloudbourne.co      
 properties:
-    revision: 02
+    revision: 01
