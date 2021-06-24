@@ -1,20 +1,28 @@
 app:
     name: prometheus
-    code: Prometheus
-    notify: appzdev@cloudbourne.co
+    code: prometheus
+    notify: appz@ecloudcontrol.com
+
 build:
-    version: 2.0
+    version: 2.17
     env: DEV
     build_file: none
     output_files: output/*.zip
-    image_template: prometheus-2.0
-    image_name: alpha/prometheus
+    image_template: prometheus-2.17
+
 deploy:
     context: alpha/DEV
+    type: statefulset
     replicas: 1
     port:
     - 9090
-monitor:
-    notify: appzops@cloudbourne.co      
+
+volumes:
+  - claim: prometheus-data
+    mount: /appz/data
+    name: data
+    size: 50Gi
+  
 properties:
-    revision: 01
+    TARGET: "nodeexporter:9100"
+    revision : 25
