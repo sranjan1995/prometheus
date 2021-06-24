@@ -1,7 +1,7 @@
 app:
     name: prometheus
     code: prometheus
-    notify: appzdev@cloudbourne.co
+    notify: appz@ecloudcontrol.com
 
 build:
     version: 2.17
@@ -21,11 +21,7 @@ volumes:
   - claim: prometheus-data
     mount: /appz/data
     name: data
-    size: 5Gi
-  - claim: prometheus-backup
-    mount: /appz/backup
-    name: backup
-    size: 5Gi
+    size: 50Gi
   
 properties:
     TARGET: "nodeexporter:9100"
