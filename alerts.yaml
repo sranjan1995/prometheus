@@ -34,5 +34,5 @@ groups:
       severity: warning
     annotations:
       title: "Low Disk space"
-      summary: Host out of disk space (instance {{ $labels.instance }})
+      summary: Host out of disk space
       description: "Disk is getting full (< 20% left)\n  Available Space is only= {{ $value }} %\n  LABELS = {{ $labels }}"
