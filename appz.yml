@@ -1,7 +1,7 @@
 app:
     name: prometheus
     code: prometheus
-    notify: aborra@ecloudcontrol.com
+    notify: bkoshy@ecloudcontrol.com
 
 build:
     version: 2.17
