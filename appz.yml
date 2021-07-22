@@ -1,17 +1,17 @@
 app:
     name: prometheus
     code: prometheus
-    notify: bkoshy@ecloudcontrol.com
+    notify: eachakala@ecloudcontrol.com
 
 build:
     version: 2.17
-    env: DEV
+    env: QA
     build_file: none
     output_files: output/*.zip
     image_template: prometheus-2.17
 
 deploy:
-    context: alpha/DEV
+    context: alpha/QA
     type: statefulset
     replicas: 1
     port:
