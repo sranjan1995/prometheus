@@ -29,7 +29,11 @@ scrape_configs:
     - targets: ['192.168.61.193:9100','192.168.61.173:9100','192.168.61.186:9100']
     metric_relabel_configs:
       - source_labels: ['nodename']
-        regex: '(.*)'
+        regex: '(engine.master)'
+        target_label: nodename
+        replacement: appz-${1}
+      - source_labels: ['nodename']
+        regex: 'k8s.(.*)'
         target_label: nodename
         replacement: appz-${1}
         
