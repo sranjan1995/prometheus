@@ -28,7 +28,7 @@ scrape_configs:
     static_configs:
     - targets: ['192.168.61.193:9100','192.168.61.173:9100','192.168.61.186:9100']
     metric_relabel_configs:
-      - source_labels: [ 'nodename' ]
+      - source_labels: [__address__]
         regex: '.*'
         target_label: nodename
         replacement: appz-${1}
