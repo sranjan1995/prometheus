@@ -26,7 +26,7 @@ scrape_configs:
   
   - job_name: 'node-exporter'
     static_configs:
-    - targets: ['172.31.17.121:9100','172.31.28.19:9100','172.31.25.240:9100']
+    - targets: ['172.31.17.121:9100','172.31.28.19:9100','172.31.25.240:9100','192.168.138.92:9100','192.168.164.7:9100','192.168.97.118:9100']
     metric_relabel_configs:
       - source_labels: ['nodename']
         regex: '(engine.master)'
@@ -36,3 +36,15 @@ scrape_configs:
         regex: 'k8s.worker.node.(.*)'
         target_label: nodename
         replacement: appz-dev-worker-${1}
+      - source_labels: ['nodename']
+        regex: 'ip-192-168-138-92.us-east-2.compute.internal'
+        target_label: nodename
+        replacement: appz-qa-worker1
+      - source_labels: ['nodename']
+        regex: 'ip-192-168-164-7.us-east-2.compute.internal'
+        target_label: nodename
+        replacement: appz-qa-worker-2
+      - source_labels: ['nodename']
+        regex: 'ip-192-168-97-118.us-east-2.compute.internal'
+        target_label: nodename
+        replacement: appz-qa-worker-3
