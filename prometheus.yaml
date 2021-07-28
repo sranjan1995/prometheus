@@ -35,4 +35,4 @@ scrape_configs:
       - source_labels: ['nodename']
         regex: 'k8s.worker.node.(.*)'
         target_label: nodename
-        replacement: appz-dev-worker-${1}}
+        replacement: appz-dev-worker-${1}
