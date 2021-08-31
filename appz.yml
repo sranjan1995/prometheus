@@ -9,6 +9,7 @@ build:
     build_file: none
     output_files: output/*.zip
     image_template: prometheus-2.17
+    image_name: alpha/prometheus
 
 deploy:
     context: alpha/DEV
