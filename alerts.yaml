@@ -28,7 +28,7 @@ groups:
 - name: Memory-usage
   rules:
   - alert: HostOutOfMemory
-    expr: node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 < 10
+    expr: node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 < 8
     for: 10m
     labels:
       severity: warning
