@@ -39,11 +39,11 @@ groups:
 - name: Disk-usage-check
   rules:
   - alert: Host Out Of DiskSpace
-    expr: (node_filesystem_avail_bytes * 100) / node_filesystem_size_bytes < 15 and ON (instance, device, mountpoint) node_filesystem_readonly == 0
+    expr: (node_filesystem_avail_bytes * 100) / node_filesystem_size_bytes < 10 and ON (instance, device, mountpoint) node_filesystem_readonly == 0
     for: 5m
     labels:
       severity: warning
     annotations:
       title: "Low Disk space"
       summary: Host out of disk space (instance {{ $labels.instance }})
-      description: "Disk is getting full (< 15% left)\n  Available Space is only= {{ $value }} %\n  LABELS = {{ $labels }}"
+      description: "Disk is getting full (< 10% left)\n  Available Space is only= {{ $value }} %\n  LABELS = {{ $labels }}"
