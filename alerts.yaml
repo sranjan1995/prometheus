@@ -34,7 +34,7 @@ groups:
       severity: warning
     annotations:
       summary: Host out of memory (instance {{ $labels.instance }})
-      description: "Node memory is filling up (< 10% left)\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+      description: "Node memory is filling up (< 8% left)\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
 - name: Disk-usage-check
   rules:
