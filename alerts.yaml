@@ -50,7 +50,7 @@ groups:
 - name:  Pod level alert 
   rules:
   - alert: ContainerCpuUsage
-    expr: avg(sum(rate(container_cpu_usage_seconds_total{name!=""}[5m])) BY (instance, name) * 1000)  > 40 
+    expr: avg(sum(rate(container_cpu_usage_seconds_total{name!=""}[5m])) BY (instance, name) * 1000)  > 80 
     for: 5m
     labels:
       severity: warning
