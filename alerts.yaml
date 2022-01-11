@@ -49,13 +49,13 @@ groups:
       description: "Disk is getting full (< 10% left)\n  Available Space is only= {{ $value }} %\n  LABELS = {{ $labels }}"
       
   - alert: PodCpuUsage
-    expr: avg(rate(container_cpu_usage_seconds_total{namespace!="",image!="",container_name!="POD"}[10m])) by (pod,namespace  )  > 60
+    expr: avg(rate(container_cpu_usage_seconds_total{namespace!="",image!="",container_name!="POD"}[5m])) by (pod,namespace  )  > 60
     for: 10m
     labels:
       severity: warning
     annotations:
       summary: Pod CPU usage
-      description: "  POD CPU AVG VALUE = {{ $value }} for 5m \n  LABELS = {{ $labels }} namespace: {{ $labels.namespace }} podname = {{ $labels.pod }}"
+      description: "  POD CPU AVG VALUE = {{ $value }} for 15m \n  LABELS = {{ $labels }} namespace: {{ $labels.namespace }} podname = {{ $labels.pod }}"
       
   - alert: KubernetesPodCrashLooping
     expr: increase(kube_pod_container_status_restarts_total[1m]) > 3
