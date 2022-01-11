@@ -47,15 +47,15 @@ groups:
       title: "Low Disk space"
       summary: Host out of disk space (instance {{ $labels.instance }})
       description: "Disk is getting full (< 10% left)\n  Available Space is only= {{ $value }} %\n  LABELS = {{ $labels }}"
-      
-  - alert: ContainerCpuUsage
-    expr: avg(rate(container_cpu_usage_seconds_total{namespace!="",image!="",container_name!="POD"}[10m])*100) by (pod,namespace  )  > 60
-    for: 15m
+- name: Pod-Usage-Check     
+  - alert: PodCpuUsage
+    expr: avg(rate(container_cpu_usage_seconds_total{namespace!="",image!="",container_name!="POD"}[5m])) by (pod,namespace  )  > 60
+    for: 5m
     labels:
       severity: warning
     annotations:
-      summary: Container CPU usage
-      description: "  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+      summary: Pod CPU usage
+      description: "  POD CPU AVG VALUE = {{ $value }} for 5m \n  LABELS = {{ $labels }} namespace: {{ $labels.namespace }} podname = {{ $labels.pod }}"
       
   - alert: KubernetesPodCrashLooping
     expr: increase(kube_pod_container_status_restarts_total[1m]) > 3
