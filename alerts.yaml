@@ -55,7 +55,7 @@ groups:
       severity: warning
     annotations:
       summary: Pod CPU usage
-      description: "  POD CPU AVG VALUE = {{ $value }} for 5m \n  LABELS = {{ $labels }} "
+      description: "  POD CPU AVG VALUE = {{ $value }} for 5m \n  LABELS = {{ $labels }} namespace: {{ $labels.namespace }} podname = {{ $labels.pod }}"
       
   - alert: KubernetesPodCrashLooping
     expr: increase(kube_pod_container_status_restarts_total[1m]) > 3
