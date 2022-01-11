@@ -49,8 +49,8 @@ groups:
       description: "Disk is getting full (< 10% left)\n  Available Space is only= {{ $value }} %\n  LABELS = {{ $labels }}"
       
   - alert: PodCpuUsage
-    expr: avg(rate(container_cpu_usage_seconds_total{namespace!="",image!="",container_name!="POD"}[5m])) by (pod,namespace  )  > 60
-    for: 5m
+    expr: avg(rate(container_cpu_usage_seconds_total{namespace!="",image!="",container_name!="POD"}[10m])) by (pod,namespace  )  > 60
+    for: 10m
     labels:
       severity: warning
     annotations:
