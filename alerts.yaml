@@ -47,7 +47,7 @@ groups:
       title: "Low Disk space"
       summary: Host out of disk space (instance {{ $labels.instance }})
       description: "Disk is getting full (< 10% left)\n  Available Space is only= {{ $value }} %\n  LABELS = {{ $labels }}"
-- name: Pod-Usage-Check     
+      
   - alert: PodCpuUsage
     expr: avg(rate(container_cpu_usage_seconds_total{namespace!="",image!="",container_name!="POD"}[5m])) by (pod,namespace  )  > 60
     for: 5m
