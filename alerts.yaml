@@ -50,7 +50,7 @@ groups:
 
 - name: High-Pod-CPU
   rules:
-  - alert: HighCpuUsage
+  - alert: HighPodCPU
     expr: avg(rate(container_cpu_usage_seconds_total{namespace!="",image!="",container_name!="POD"}[5m])*100) by (pod,namespace  )  > 60
     for: 15m
     labels:
@@ -70,8 +70,8 @@ groups:
       
 - name: CPU-load
   rules:
-  - alert: HostHighCpuLoad
-    expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[15m])) * 100) > 80
+  - alert: HighNodeCPU
+    expr:  100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
     for: 5m
     labels:
       severity: warning
