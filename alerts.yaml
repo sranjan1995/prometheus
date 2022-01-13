@@ -1,17 +1,5 @@
 groups:
 
-- name: Cpu-usage
-  rules:
-  - alert: HostHighCpuLoad
-    expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[2m])) * 100) < 95
-    for: 3m
-    labels:
-      severity: warning
-    annotations:
-      summary: Host high CPU load (instance {{ $labels.instance }})
-      description: "CPU load is > 95%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-
-
 - name: Disk-usage
   rules:
   - alert: 'Low data disk space'
@@ -57,17 +45,8 @@ groups:
       severity: warning
     annotations:
       summary: HighCpuUsage
-      description: "  Pod cpu average value = {{ $value }}  \n  namespace: {{ $labels.namespace }} \n podname = {{ $labels.pod }}"
+      description: "  Pod cpu average value = {{ $value }}  \n  namespace: {{ $labels.namespace }} \n podname = {{ $labels.pod }}"  
      
-  - alert: KubernetesPodCrashLooping
-    expr: increase(kube_pod_container_status_restarts_total[1m]) > 3
-    for: 2m
-    labels:
-      severity: warning
-    annotations:
-      summary: Kubernetes pod crash looping (instance {{ $labels.instance }})
-      description: "Pod {{ $labels.pod }} is crash looping\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-      
 - name: CPU-load
   rules:
   - alert: HighNodeCPU
