@@ -50,7 +50,7 @@ groups:
 - name: CPU-load
   rules:
   - alert: HighNodeCPU
-    expr: node_load15 / count by (instance, job) (node_cpu_seconds_total{mode="idle"}) >= 8
+    expr: rate(node_load15[5m])*100 > 80
     for : 5m
     labels:
       severity: warning
