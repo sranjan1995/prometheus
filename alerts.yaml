@@ -45,7 +45,7 @@ groups:
       severity: warning
     annotations:
       summary: HighCpuUsage
-      description: "Pod cpu average value : {{ $value | printf "%.2f" }}  \n  namespace : {{ $labels.namespace }} \n podname : {{ $labels.pod }}"
+      description: "Pod cpu average value : {{ $value | printf \"%.2f\" }}  \n  namespace : {{ $labels.namespace }} \n podname : {{ $labels.pod }}"
      
 - name: CPU-load
   rules:
