@@ -47,16 +47,6 @@ groups:
       summary: Host out of disk space (instance {{ $labels.instance }})
       description: "Disk is getting full (< 10% left)\n  Available Space is only= {{ $value }} %\n  LABELS = {{ $labels }}"
 
-- name: High-Pod-CPU
-  rules:
-  - alert: HighPodCPU
-    expr: avg(rate(container_cpu_usage_seconds_total{namespace!="",image!="",container_name!="POD"}[5m])*100) by (pod,namespace  )  > 90
-    for: 15m
-    labels:
-      severity: warning
-    annotations:
-      summary: HighCpuUsage
-      description: "Pod cpu average value : {{ $value | printf \"%.2f\" }}"
      
 - name: CPU-load
   rules:
