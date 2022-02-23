@@ -11,7 +11,7 @@ build:
     image_template: prometheus-2.17
 
 deploy:
-    context: alpha/qa
+    context: alpha/QA
     type: statefulset
     replicas: 1
     port:
