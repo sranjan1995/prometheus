@@ -24,19 +24,7 @@ scrape_configs:
     static_configs:
     - targets: ['localhost:9090']
   
-  - job_name: 'node-exporter'
-    static_configs:
-    - targets: ['172.31.17.121:9100','172.31.28.19:9100','172.31.25.240:9100','192.168.103.189','192.168.130.193','192.168.163.143']
-    metric_relabel_configs:
-      - source_labels: ['nodename']
-        regex: '(engine.master)'
-        target_label: nodename
-        replacement: appz-${1}
-      - source_labels: ['nodename']
-        regex: 'k8s.(.*)'
-        target_label: nodename
-        replacement: appz-${1}
-        
+      
   - job_name: 'node-exporter'
     static_configs:
     - targets: ['172.31.17.121:9100','172.31.28.19:9100','172.31.25.240:9100','192.168.103.189','192.168.163.143','192.168.130.193']
