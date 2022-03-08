@@ -35,7 +35,7 @@ scrape_configs:
       match[]:
         - '{job=~"kube-state-metrics|kubernetes-cadvisor"}'
     static_configs:
-      - targets: ['10.100.19.91:9090']
+      - targets: ['alpha-qa-prometheus-2-17.038ecc66.lowtouch.cloud:9090']
       
   - job_name: 'node-exporter'
     static_configs:
