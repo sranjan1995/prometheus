@@ -28,14 +28,14 @@ scrape_configs:
   - job_name: 'federation'
     scrape_interval: 20s
     scrape_timeout: 20s
-    scheme: http
+    scheme: https
     metrics_path: /federate
     honor_labels: true
     params:
       match[]:
         - '{job=~"kube-state-metrics|kubernetes-cadvisor"}'
     static_configs:
-      - targets: ['https://alpha-qa-prometheus-2-17.038ecc66.lowtouch.cloud:443']
+      - targets: ['alpha-qa-prometheus-2-17.038ecc66.lowtouch.cloud:443']
       
   - job_name: 'node-exporter'
     static_configs:
