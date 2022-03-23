@@ -5,13 +5,13 @@ app:
 
 build:
     version: 2.17
-    env: QA
+    env: DEV
     build_file: none
     output_files: output/*.zip
     image_template: prometheus-2.17
 
 deploy:
-    context: alpha/QA
+    context: alpha/DEV
     type: statefulset
     replicas: 1
     port:
