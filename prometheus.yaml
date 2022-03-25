@@ -51,9 +51,9 @@ scrape_configs:
       action: replace
       target_label: pod
       
-    - source_labels: [pod]
-      regex: postgres-ha-13.*
-      action: keep  
+    #- source_labels: [pod]
+    #  regex: postgres-ha-13.*
+    #  action: keep  
 
     - source_labels: [__address__]
       target_label: __address__
