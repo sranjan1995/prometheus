@@ -70,4 +70,4 @@ scrape_configs:
       target_label: __metrics_path__
       replacement: /api/v1/nodes/${1}/proxy/metrics/cadvisor
       
-  
+ 
