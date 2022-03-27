@@ -60,7 +60,7 @@ scrape_configs:
       - source_labels: ['nodename']
         regex: 'ip-192-168-130-193.us-east-2.compute.internal'
         target_label: nodename
-        replacement: appz-prod-worker-1 
+        replacement: appz-qa-worker-3 
 
 
 
