@@ -24,10 +24,9 @@ scrape_configs:
     static_configs:
     - targets: ['localhost:9090']
   
-      
   - job_name: 'node-exporter'
     static_configs:
-    - targets: ['172.31.17.121:9100','172.31.28.19:9100','172.31.25.240:9100','172.31.31.27:9100','172.31.24.133:9100','192.168.103.189:9100','192.168.163.143:9100','192.168.130.193:9100']
+    - targets: ['192.168.61.168:9100','192.168.61.195:9100','192.168.61.85:9100']
     metric_relabel_configs:
       - source_labels: ['nodename']
         regex: '(engine.master)'
@@ -37,22 +36,35 @@ scrape_configs:
         regex: 'k8s.(.*)'
         target_label: nodename
         replacement: appz-${1}
-      - source_labels: ['nodename']
-        regex: 'ip-192-168-103-189.us-east-2.compute.internal'
-        target_label: nodename
-        replacement: appz-qa-worker-1
-      - source_labels: ['nodename']
-        regex: 'ip-192-168-163-143.us-east-2.compute.internal'
-        target_label: nodename
-        replacement: appz-qa-worker-2
-      - source_labels: ['nodename']
-        regex: 'ip-192-168-130-193.us-east-2.compute.internal'
-        target_label: nodename
-        replacement: appz-prod-worker-1 
   - job_name: 'kube-state-metrics'
     static_configs:
     - targets: ['kube-state-metrics.kube-system.svc.cluster.local:8080']
+  - job_name: 'postgres_exporter'
+    kubernetes_sd_configs:
+    - role: endpoints
+    
+    relabel_configs:
+    - source_labels: [__meta_kubernetes_namespace]
+      action: replace
+      target_label: namespace
+    - source_labels: [__meta_kubernetes_pod_name]
+      action: replace
+      target_label: pod
+      
+    - source_labels: [pod]
+      regex: postgres-ha-13-*
+      action: keep  
 
+    - source_labels: [__address__]
+      target_label: __address__
+      regex: '([^:]+)(:[5432]+)?'
+      replacement: '${1}'
+      action: drop
+      
+    - source_labels: [__address__]
+      regex: '.*'
+      target_label: instance
+      replacement: 'Appz${1}' 
   - job_name: 'kubernetes-cadvisor'
     scheme: https
     tls_config:
@@ -69,5 +81,3 @@ scrape_configs:
       regex: (.+)
       target_label: __metrics_path__
       replacement: /api/v1/nodes/${1}/proxy/metrics/cadvisor
-      
- 
