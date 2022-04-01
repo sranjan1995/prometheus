@@ -14,7 +14,6 @@ deploy:
     context: alpha/DEV
     type: statefulset
     replicas: 1
-    ingress: nodeport
     port:
     - 9090
 
