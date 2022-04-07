@@ -1,7 +1,7 @@
 app:
     name: prometheus
     code: prometheus
-    notify: appzdev@cloudbourne.co
+    notify: cmsit-alerts@ecloudcontrol.com
 
 build:
     version: 2.17
@@ -22,8 +22,6 @@ volumes:
     mount: /appz/data
     name: data
     size: 50Gi
-    matchLabels: false
-    
-  
+      
 properties:
-    revision : 75
+    revision : 12
