@@ -10,7 +10,8 @@ groups:
     annotations:
       summary: Host high CPU load (instance {{ $labels.instance }})
       description: "CPU load is > 95%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-      
+
+
 - name: Disk-usage
   rules:
   - alert: 'Low data disk space'
@@ -27,27 +28,37 @@ groups:
 - name: Memory-usage
   rules:
   - alert: HostOutOfMemory
-    expr: node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 < 8
+    expr: node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 < 10
     for: 10m
     labels:
       severity: warning
     annotations:
       summary: Host out of memory (instance {{ $labels.instance }})
-      description: "Node memory is filling up (< 8% left)\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+      description: "Node memory is filling up (< 10% left)\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
 - name: Disk-usage-check
   rules:
   - alert: Host Out Of DiskSpace
-    expr: (node_filesystem_avail_bytes * 100) / node_filesystem_size_bytes < 10 and ON (instance, device, mountpoint) node_filesystem_readonly == 0
+    expr: (node_filesystem_avail_bytes * 100) / node_filesystem_size_bytes < 15 and ON (instance, device, mountpoint) node_filesystem_readonly == 0
     for: 5m
     labels:
       severity: warning
     annotations:
       title: "Low Disk space"
       summary: Host out of disk space (instance {{ $labels.instance }})
-      description: "Disk is getting full (< 10% left)\n  Available Space is only= {{ $value }} %\n  LABELS = {{ $labels }}"
-
-     
+      description: "Disk is getting full (< 15% left)\n  Available Space is only= {{ $value }} %\n  LABELS = {{ $labels }}"
+    
+- name: High-Pod-CPU
+  rules:
+  - alert: HighPodCPU
+    expr: avg(rate(container_cpu_usage_seconds_total{namespace!="",image!="",container_name!="POD"}[5m])*100) by (pod,namespace  )  > 90
+    for: 15m
+    labels:
+      severity: warning
+    annotations:
+      summary: HighCpuUsage
+      description: "Pod cpu average value : {{ $value | printf \"%.2f\" }}"
+      
 - name: CPU-load
   rules:
   - alert: HighNodeCPU
@@ -58,4 +69,3 @@ groups:
     annotations:
       summary: "High CPU load (instance {{ $labels.instance }})"
       description: "CPU load is high\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}"
-      
