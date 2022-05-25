@@ -120,7 +120,7 @@ scrape_configs:
     static_configs:
     - targets:
 #       - https://google.com/doesntexist
-#       - https://www.ecloudcontrol.com
+        - https://www.ecloudcontrol.com
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
