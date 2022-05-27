@@ -121,8 +121,8 @@ scrape_configs:
     - targets:
 #       - https://google.com/doesntexist
 #        - https://www.ecloudcontrol.com
-        - https://francisjoy-dev-hellonode-0-1.038ecc66.lowtouch.cloud
-        - https://francisjoy-dev-laravel-app-7-4.038ecc66.lowtouch.cloud
+#        - https://francisjoy-dev-hellonode-0-1.038ecc66.lowtouch.cloud
+ #       - https://francisjoy-dev-laravel-app-7-4.038ecc66.lowtouch.cloud
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
