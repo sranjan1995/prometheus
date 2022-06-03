@@ -16,7 +16,8 @@ deploy:
     replicas: 1
     port:
     - 9090
-
+    ingress: service_namespace
+    
 volumes:
   - claim: prometheus-data
     class: microk8s-hostpath
