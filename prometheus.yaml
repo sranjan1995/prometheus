@@ -84,4 +84,4 @@ scrape_configs:
       
   - job_name: 'jmeter'
     static_configs:
-    - targets: ['jmeter-0-1:9270']
+    - targets: ['jmeter-0-1.svc.cluster.local:9270']
