@@ -119,10 +119,67 @@ scrape_configs:
      module: [http_2xx] 
     static_configs:
     - targets:
-#       - https://google.com/doesntexist
-#        - https://www.ecloudcontrol.com
-        - https://francisjoy-dev-hellonode-0-1.038ecc66.lowtouch.cloud
- #       - https://francisjoy-dev-laravel-app-7-4.038ecc66.lowtouch.cloud
+       - https://alpha-dev-openproject-11-3.32d430c5.lowtouch.cloud
+       - https://demo.ecloudcontrol.com/tomcat-loadgen-0-3/clock.jsp
+       - https://rejith-dev-tomcat-loadgen-0-3.32d430c5.lowtouch.cloud/tomcat-loadgen/clock.jsp
+       - https://demo.ecloudcontrol.com/login
+       - https://staging.cloudbourne.co/login
+       - lowtouch-cloud-dns-01.ecloudcontrol.com
+       - lowtouch-cloud-dns-02.ecloudcontrol.com
+       - https://www.ecloudcontrol.com
+       - https://demo.ecloudcontrol.com/hook
+       - https://appz.0314f142.lowtouch.cloud/hook
+       - https://appz.32d430c5.lowtouch.cloud/hook
+       - https://appz.36abd99e.lowtouch.cloud/hook
+       - https://appz.0de945bd.lowtouch.cloud/hook
+       - https://demo.ecloudcontrol.com/logs.myco-dev/api/system/lbstatus
+       - https://jibe-rigneydolphin.lowtouch.cloud/login
+       - https://rigneydolphin-qa-appz-apache2-0-2.36abd99e.lowtouch.cloud/login
+       - https://devclever-india-dev-lyc-account-0-4.0de945bd.lowtouch.cloud/api/v1/key
+       - https://account-0-4.launchmycareer.com/api/v1/key
+       - https://devclever-india-qa-lyc-account-0-4.0de945bd.lowtouch.cloud/api/v1/key
+       - https://devclever-india-dev-lyc-admin-0-4.0de945bd.lowtouch.cloud
+       - https://admin-0-4.launchmycareer.com/
+       - https://devclever-india-qa-lyc-admin-0-4.0de945bd.lowtouch.cloud
+       - https://blog.launchmycareer.com/
+       - https://devclever-india-qa-lyc-blog-5-5.0de945bd.lowtouch.cloud
+       - https://devclever-india-dev-lyc-career-0-4.0de945bd.lowtouch.cloud/api/v1/key
+       - https://career-0-4.launchmycareer.com/api/v1/key
+       - https://devclever-india-qa-lyc-career-0-4.0de945bd.lowtouch.cloud/api/v1/key
+       - https://csc.launchmycareer.com/
+       - https://devclever-india-dev-lyc-diagnostic-0-4.0de945bd.lowtouch.cloud/api/v1/key
+       - https://diagnostic-0-4.launchmycareer.com/api/v1/key
+       - https://devclever-india-qa-lyc-diagnostic-0-4.0de945bd.lowtouch.cloud/api/v1/key
+       - https://devclever-india-dev-lyc-lc-0-4.0de945bd.lowtouch.cloud
+       - https://lc-0-4.launchmycareer.com/
+       - https://devclever-india-qa-lyc-lc-0-4.0de945bd.lowtouch.cloud
+       - https://devclever-india-dev-lyc-learning-hub-0-4.0de945bd.lowtouch.cloud
+       - https://learninghub-0-4.launchmycareer.com/
+       - https://devclever-india-qa-lyc-learning-hub-0-4.0de945bd.lowtouch.cloud
+       - https://devclever-india-dev-lyc-passport-0-4.0de945bd.lowtouch.cloud
+       - https://passport-0-4.launchmycareer.com/
+       - https://devclever-india-qa-lyc-passport-0-4.0de945bd.lowtouch.cloud
+       - https://devclever-india-dev-lyc-subscription-0-4.0de945bd.lowtouch.cloud
+       - https://subscription-0-4.launchmycareer.com
+       - https://devclever-india-qa-lyc-subscription-0-4.0de945bd.lowtouch.cloud
+       - https://web-0-5.launchmycareer.com
+       - https://devclever-india-dev-lyc-web-0-4.0de945bd.lowtouch.cloud
+       - https://launchmycareer.com
+       - https://devclever-india-qa-lyc-web-0-4.0de945bd.lowtouch.cloud
+       - https://devclever-india-dev-lyc-web-admin-0-4.0de945bd.lowtouch.cloud
+       - https://webadmin.launchmycareer.com
+       - https://devclever-india-qa-lyc-web-admin-0-4.0de945bd.lowtouch.cloud
+       - https://mybrotherskeeper.lowtouch.cloud/api/authtest
+       - https://mybrotherskeeper.lowtouch.cloud/api/dmtest
+       - https://mybrotherskeeper.lowtouch.cloud/api/nginxtest
+       - https://mybrotherskeeper.lowtouch.cloud/api/notitest
+       - https://mybrotherskeeper.lowtouch.cloud/api/pdftest
+       - https://mybrotherskeeper.lowtouch.cloud/api/webtest
+       - https://mybrotherskeeper.lowtouch.cloud/api/workertest
+       - https://www.nhpri.org
+       - https://wpqa.nhpri.org
+       - https://nhpri-staging.lowtouch.cloud/
+       - https://tracker.ecloudcontrol.com
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
