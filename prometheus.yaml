@@ -26,7 +26,7 @@ scrape_configs:
   
   - job_name: 'node-exporter'
     static_configs:
-    - targets: ['172.31.41.243:9100','172.31.42.7:9100','172.31.36.167:9100','172.31.42.82:9100']
+    - targets: ['172.31.38.133:9100','172.31.42.93:9100','172.31.41.23:9100','172.31.39.107:9100']
     metric_relabel_configs:
       - source_labels: ['nodename']
         regex: '(engine.master)'
