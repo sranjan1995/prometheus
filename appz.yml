@@ -5,13 +5,13 @@ app:
 
 build:
     version: 2.17
-    env: DEV
+    env: PROD
     build_file: none
     output_files: output/*.zip
     image_template: prometheus-2.17
 
 deploy:
-    context: alpha/DEV
+    context: alpha/PROD
     type: statefulset
     replicas: 1
     ingress: none
@@ -23,7 +23,7 @@ volumes:
     mount: /appz/data
     name: data
     size: 50Gi
-    
+    matchLabels: false
   
 properties:
     revision : 19
