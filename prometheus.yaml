@@ -4,7 +4,7 @@ global:
   evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
   # scrape_timeout is set to the global default (10s).
   external_labels:
-    datacenter: secondary
+    datacenter: prod
 
 # A scrape configuration containing exactly one endpoint to scrape:
 # Here it's Prometheus itself.
