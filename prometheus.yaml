@@ -77,3 +77,44 @@ scrape_configs:
       regex: (.+)
       target_label: __metrics_path__
       replacement: /api/v1/nodes/${1}/proxy/metrics/cadvisor
+
+  - job_name: 'nodejs'
+   
+    kubernetes_sd_configs:
+    - role: endpoints
+    
+    
+    relabel_configs:
+    - source_labels: [__meta_kubernetes_namespace]
+      
+      action: replace
+      target_label: namespace
+    - source_labels: [__meta_kubernetes_pod_name]
+      
+      action: replace
+      target_label: pod
+
+        
+    - source_labels: [pod]
+      #regex: '((.*)hellonode(.*))'
+      #regex: '((.*)hellonode(.*))'|'kbfc(.*))'
+      regex: hellonode.*|kbfc.*|hntest.*
+      action: keep
+
+    - source_labels: [__address__]
+      target_label: __address__
+      regex: '([^:]+)(:[3000]+)?'
+      #regex: '([^:]+)(:[80]+)?'
+      replacement: '${1}'
+      action: drop
+      
+    - source_labels: [__address__]
+      target_label: __address__
+      regex: '(.*):80'
+      replacement: '${1}'
+      action: drop
+      
+    - source_labels: [__address__]
+      regex: '.*'
+      target_label: instance
+      replacement: 'Appz${1}' 
