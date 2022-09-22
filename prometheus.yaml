@@ -77,7 +77,12 @@ scrape_configs:
       regex: (.+)
       target_label: __metrics_path__
       replacement: /api/v1/nodes/${1}/proxy/metrics/cadvisor
-
+      
+  - job_name: 'yace'
+    scrape_interval: 60s
+    static_configs:
+          - targets: ['yace-0-29-0-29:5000']
+          
   - job_name: 'nodejs'
    
     kubernetes_sd_configs:
