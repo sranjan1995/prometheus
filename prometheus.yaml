@@ -103,7 +103,7 @@ scrape_configs:
     - source_labels: [pod]
       #regex: '((.*)hellonode(.*))'
       #regex: '((.*)hellonode(.*))'|'kbfc(.*))'
-      regex: apexaiq*
+      regex: 'apexaiq*'
       action: keep
 
     - source_labels: [__address__]
