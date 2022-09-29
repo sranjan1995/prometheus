@@ -84,8 +84,40 @@ scrape_configs:
      - targets: ['yace-0-29:5000']
  
   - job_name: 'rabbitmq_exporter'
-    static_configs:
-     - targets: ['rabbitmq-3-9:15692']
+   
+    kubernetes_sd_configs:
+    - role: endpoints
+    
+    relabel_configs:
+    - source_labels: [__meta_kubernetes_namespace]
+      
+      action: replace
+      target_label: namespace
+    - source_labels: [__meta_kubernetes_pod_name]
+      
+      action: replace
+      target_label: pod
+        
+    - source_labels: [pod]
+      regex: 'rabbitmq.*'
+      action: keep
+    - source_labels: [__address__]
+      target_label: __address__
+      regex: '([^:]+)(:[3000]+)?'
+      #regex: '([^:]+)(:[80]+)?'
+      replacement: '${1}'
+      action: drop
+      
+    - source_labels: [__address__]
+      target_label: __address__
+      regex: '(.*):80'
+      replacement: '${1}'
+      action: drop
+      
+    - source_labels: [__address__]
+      regex: '.*'
+      target_label: instance
+      replacement: 'Appz${1}'
           
   - job_name: 'nodejs'
    
