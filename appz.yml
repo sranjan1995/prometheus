@@ -11,7 +11,7 @@ build:
     image_template: prometheus-2.17
 
 deploy:
-    context: pixd-monitoring/DEV
+    context: monitoring/DEV
     type: statefulset
     replicas: 1
     port:
