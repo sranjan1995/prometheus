@@ -155,7 +155,4 @@ scrape_configs:
       replacement: '${1}'
       action: drop
       
-    - source_labels: [__address__]
-      regex: '.*'
-      target_label: instance
-      replacement: 'Appz${1}' 
+    
