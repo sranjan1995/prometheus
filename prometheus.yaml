@@ -88,17 +88,22 @@ scrape_configs:
       target_label: namespace
     - source_labels: [__meta_kubernetes_pod_name]
       action: replace
-      target_label: instance
-        
-    - source_labels: [instance]
-      regex: redis.*
-      action: keep  
+      target_label: pod
+
+    - source_labels: [pod]
+      regex: '((.*)redis(.*))'
+      action: keep   
 
     - source_labels: [__address__]
       target_label: __address__
       regex: '([^:]+)(:[6379]+)?'
       replacement: '${1}'
-      action: drop 
+      action: drop
+      
+    - source_labels: [__address__]
+      regex: '.*'
+      target_label: instance
+      replacement: 'AppZ${1}'
       
   - job_name: 'yace'
     scrape_interval: 60s
