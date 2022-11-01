@@ -39,7 +39,7 @@ scrape_configs:
 
   - job_name: 'node-exporter'
     static_configs:
-    - targets: ['172.31.38.133:9100','172.31.42.93:9100','172.31.41.23:9100','172.31.39.107:9100','192.168.110.131:9100','192.168.133.77:9100']
+    - targets: ['172.31.38.133:9100','172.31.42.93:9100','172.31.41.23:9100','172.31.39.107:9100','192.168.110.131:9100','192.168.133.77:9100','192.168.119.28:9100','192.168.143.65']
     metric_relabel_configs:
       - source_labels: ['nodename']
         regex: '(engine.master)'
@@ -182,4 +182,7 @@ scrape_configs:
       replacement: '${1}'
       action: drop
       
-    
+    - source_labels: [__address__]
+      regex: '.*'
+      target_label: instance
+      replacement: 'Appz${1}'    
