@@ -64,7 +64,15 @@ scrape_configs:
       - source_labels: ['nodename']
         regex: 'ip-192-168-143-65.eu-west-3.compute.internal'
         target_label: nodename
-        replacement: appz-dev2-worker-2       
+        replacement: appz-dev2-worker-2
+      - source_labels: ['nodename']
+        regex: 'ip-198-19-103-34.eu-west-3.compute.internal'
+        target_label: nodename
+        replacement: appz-prod2-worker-1
+      - source_labels: ['nodename']
+        regex: 'ip-198-19-139-205.eu-west-3.compute.internal'
+        target_label: nodename
+        replacement: appz-prod2-worker-2        
   - job_name: 'kube-state-metrics'
     static_configs:
     - targets: ['kube-state-metrics.kube-system.svc.cluster.local:8080']
