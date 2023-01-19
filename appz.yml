@@ -1,7 +1,7 @@
 app:
     name: prometheus
     code: prometheus
-    notify: srswain@ecloudcontrol.com
+    notify: appzdev@cloudbourne.co
 
 build:
     version: 2.17
